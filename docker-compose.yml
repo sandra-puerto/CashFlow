@@ -1,0 +1,97 @@
+services:
+  cashflow-prod:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: cashflow-prod
+    expose:
+      - "9000"
+    working_dir: /app
+    command: ["php-fpm", "-F"]
+    networks:
+      - production
+    profiles:
+      - production
+
+  cashflow-demo:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: cashflow-demo
+    expose:
+      - "9000"
+    working_dir: /app
+    volumes:
+      - demo-src:/app
+    command: ["php-fpm", "-F"]
+    networks:
+      - internal  
+    depends_on:
+      - mariadb
+    profiles:
+      - demo
+
+  cashflow-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    container_name: cashflow-dev
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./src:/app
+    working_dir: /app
+    command: >
+      sh -c "composer install &&
+             npm install &&
+             npm run build &&
+             php artisan serve --host=0.0.0.0 --port=80"
+    networks:
+      - internal
+    depends_on:
+      - mariadb
+    profiles:
+      - dev
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    expose:
+      - "3306"
+    ports:
+      - "127.0.0.1:3306:3306"
+    networks:
+      - internal 
+    profiles: ["dev", "demo"]
+
+  nginx:
+    build: 
+      context: ./docker/nginx
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "127.0.0.1:80:80"
+    volumes:
+      - demo-src:/app
+    depends_on:
+      - cashflow-demo
+    networks:
+      - internal
+    profiles:
+      - demo
+
+volumes:
+  demo-src:
+
+networks:
+  internal:
+    driver: bridge
+  
+  production:
+    external: true
