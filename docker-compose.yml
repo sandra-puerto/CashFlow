@@ -38,6 +38,7 @@ services:
       args:
         UID: ${UID}
         GID: ${GID}
+        USERNAME: ${USERNAME}
     container_name: cashflow-dev
     ports:
       - "127.0.0.1:80:80"
@@ -66,6 +67,8 @@ services:
       - "3306"
     ports:
       - "127.0.0.1:3306:3306"
+    volumes:
+      - mariadb:/var/lib/mysql
     networks:
       - internal 
     profiles: ["dev", "demo"]
@@ -88,6 +91,7 @@ services:
 
 volumes:
   demo-src:
+  mariadb:
 
 networks:
   internal:

@@ -1,6 +1,16 @@
 # Imagen base de PHP CLI
 FROM php:8.2-cli
 
+# Declaracion de Argumentos globales (.env)
+ARG UID=1000
+ARG GID=1000
+ARG USERNAME=dev
+
+# Crear grupo y usuario con UID y GID del host
+RUN groupadd -g $GID $USERNAME && \
+    useradd -m -u $UID -g $GID -s /bin/bash $USERNAME && \
+    echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 # Instalar dependencias del sistema y librerías necesarias para extensiones PHP
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git unzip zip curl gnupg ca-certificates nano bash procps \
@@ -20,6 +30,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g npm && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Cambiar al usuario creado
+USER $USERNAME
 
 # Directorio de trabajo en el contenedor
 WORKDIR /app
