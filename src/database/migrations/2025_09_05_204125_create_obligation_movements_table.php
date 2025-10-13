@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('obligation_movements', function (Blueprint $table) {
             
             # Llave primaria
-            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id')->primary()->autoIncrement();
 
             /* Campos principales */
 

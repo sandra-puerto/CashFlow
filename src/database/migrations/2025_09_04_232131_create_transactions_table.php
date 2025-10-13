@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
 
             # Llave Primaria
-            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id')->primary()->autoIncrement();
 
             /* Campos principales */
 

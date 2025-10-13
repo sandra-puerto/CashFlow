@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('funds', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedInteger('id')->primary();
+            $table->unsignedInteger('id')->primary()->autoIncrement();
 
             /* Campos principales */
 

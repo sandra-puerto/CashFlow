@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('third_parties', function (Blueprint $table) {
 
             # PK: Llave primaria
-            $table->unsignedInteger('id')->primary();
+            $table->unsignedInteger('id')->primary()->autoIncrement();
 
             /* Campos Principales */
 

@@ -14,12 +14,9 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedInteger('id')->primary();
+            $table->unsignedInteger('id')->primary()->autoIncrement();
 
             /* Campos Principales */
-
-                // Campo: Tipo
-                $table->enum('type', ['activo', 'pasivo', 'patrimonio', 'ingreso', 'gasto', 'orden'])->comment("Clase de cuenta PUC");
 
                 // Campo: Codigo
                 $table->unsignedInteger('code')->unique();
