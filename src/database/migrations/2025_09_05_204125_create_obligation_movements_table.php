@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('obligation_movements', function (Blueprint $table) {
             
             # Llave primaria
-            $table->unsignedBigInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos principales */
 
                 // FK: ID de la obligacion
-                $table->unsignedInteger('obligation_id');
+                $table->uuid('obligation_id');
 
                 // FK: ID de la transaccion asociada a la novedad (Opcional)
-                $table->unsignedBigInteger('transaction_id')->nullable();
+                $table->uuid('transaction_id')->nullable();
 
                 // Campo: Tipo de novedad
                 $table->enum('type', ['apertura','abono','cancelacion','condonacion','ajuste','interes']);

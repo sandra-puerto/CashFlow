@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('fund_movements', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedBigInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos principales */
 
+                // FK: ID de Fondo
+                $table->uuid('found_id');
+
                 // FK: ID de transaccion asociada (Opcional)
-                $table->unsignedBigInteger('transaction_id')->nullable();
+                $table->uuid('transaction_id')->nullable();
 
                 // Campo: Tipo de Movimiento
                 $table->enum('type', ['asignacion', 'egreso', 'reintegro', 'ajuste']);
@@ -33,6 +36,16 @@ return new class extends Migration
 
             // Campos create_at y update_at
             $table->timestamps();
+
+            /* Llaves foraneas */
+
+                // FK: Id del Fondo
+                $table->foreign('found_id')->references('id')->on('funds')->noActionOnDelete();
+
+                // FK: Id de la trasaccion asociada (Opcional)
+                $table->foreign('transaction_id')->references('id')->on('transactions')->noActionOnDelete();
+            //
+            
         });
     }
 

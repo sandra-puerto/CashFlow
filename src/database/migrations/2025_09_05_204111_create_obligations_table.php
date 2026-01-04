@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('obligations', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos principales */
 
                 // FK: ID del tercero asociado
-                $table->unsignedInteger('third_party_id')->comment("ID del tercero asociado");
+                $table->uuid('third_party_id')->comment("ID del tercero asociado");
 
                 // FK: ID del asiento inicial de la obligacion
-                $table->unsignedBigInteger('transaction_id')->comment("ID del asiento inicial de la obligacion");
+                $table->uuid('transaction_id')->comment("ID del asiento inicial de la obligacion");
 
                 // Campo: Tipo de Obligacion
                 $table->enum('type', ["CXC", "CXP"]);

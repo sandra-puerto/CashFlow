@@ -14,15 +14,12 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedBigInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos Personalizados */
 
                 // FK: ID Transaccion asociada
-                $table->unsignedBigInteger('transaction_id');
-
-                // Campo: UUID para generar el filename
-                $table->uuid()->unique();
+                $table->uuid('transaction_id');
 
                 // Campo: Tipo
                 $table->enum('type', ['factura', 'recibo', 'comprobante de pago']);

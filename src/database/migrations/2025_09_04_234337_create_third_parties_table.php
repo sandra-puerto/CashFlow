@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('third_parties', function (Blueprint $table) {
 
             # PK: Llave primaria
-            $table->unsignedInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos Principales */
 
@@ -25,16 +25,16 @@ return new class extends Migration
                 $table->string('surnames', 255)->nullable();
 
                 // FK: Tipo de Documento
-                $table->unsignedInteger('doc_type_id');
+                $table->uuid('doc_type_id');
 
                 // Campo: Numero de Documento
-                $table->unsignedBigInteger('doc_num')->unique();
+                $table->uuid('doc_num')->unique();
 
                 // Campo: Correo Electronico
                 $table->string('email')->unique()->nullable();
 
                 // Campo: Numero telefonico
-                $table->unsignedBigInteger('phone')->unique();
+                $table->uuid('phone')->unique();
             //
 
             // Campos create_at y update_at

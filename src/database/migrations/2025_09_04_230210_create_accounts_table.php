@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
 
             # Llave primaria
-            $table->unsignedInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos Principales */
 
@@ -22,13 +22,19 @@ return new class extends Migration
                 $table->unsignedInteger('code')->unique();
 
                 // Campo: Nombre
-                $table->string('name', 255)->unique();
+                $table->string('name', 255);
+
+                // Campo: Naturaleza
+                $table->enum('nature', ['debit', 'credit'])->comment('Naturaleza de la cuenta');
 
                 // Campo: Descripcion (Opcional)
                 $table->string('description', 255)->nullable();
 
                 // FK: ID cuenta padre (Opcional)
-                $table->unsignedInteger('parent_id')->nullable()->comment('ID de la cuenta padre');
+                $table->uuid('parent_id')->nullable()->comment('ID de la cuenta padre');
+
+                // Campo: Estado (Activo / Inactivo)
+                $table->boolean('is_active')->default(true)->comment('Estado de la cuenta');
             //
 
             // Campos create_at y update_at
@@ -38,6 +44,12 @@ return new class extends Migration
 
                 // ID de la cuenta padre
                 $table->foreign('parent_id')->references('id')->on('accounts')->noActionOnDelete();
+            //
+
+            /* Indices Personalizados */
+
+                // Indice compuesto: Nombre unico de cuenta por padre
+                $table->unique(['parent_id', 'name']);
             //
         });
     }

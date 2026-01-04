@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
 
             # Llave Primaria
-            $table->unsignedBigInteger('id')->primary()->autoIncrement();
+            $table->uuid('id')->primary();
 
             /* Campos principales */
 
                 // FK: ID de la cuenta contable afectada
-                $table->unsignedInteger("account_id")->comment("ID de la cuenta contable afectada");
+                $table->uuid("account_id")->comment("ID de la cuenta contable afectada");
 
                 // FK: Transacción origen enlazada a la actual
-                $table->unsignedBigInteger('flow_id')->comment('ID de la transacción origen');
+                $table->uuid('flow_id')->comment('ID de la transacción origen');
 
                 // Campo: Fecha y hora de registro de la transaccion
                 $table->datetime('datetime');

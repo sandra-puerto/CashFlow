@@ -1,0 +1,241 @@
+{
+  "1": {
+    "name": "Activos",
+    "nature": "debit",
+    "accounts": {
+      "11": {
+        "name": "Efectivo y Equivalentes",
+        "accounts": {
+          "111": {
+            "name": "Banco Caja Social",
+            "accounts": {
+              "1111": { "name": "Disponible", "accounts": {} },
+              "1112": { "name": "Ahorro Bolsillo", "accounts": {} }
+            }
+          },
+          "112": {
+            "name": "Nequi",
+            "accounts": {
+              "1121": { "name": "Disponible", "accounts": {} }
+            }
+          },
+          "113": {
+            "name": "Caja Menor",
+            "accounts": {
+              "1131": { "name": "Billetera", "accounts": {} },
+              "1132": { "name": "Caja Fuerte", "accounts": {} }
+            }
+          }
+        }
+      },
+      "12": {
+        "name": "Inversiones",
+        "accounts": {
+          "121": {
+            "name": "Banco Caja Social",
+            "accounts": {
+              "1211": { "name": "CDT", "accounts": {} }
+            }
+          },
+          "122": {
+            "name": "Trii",
+            "accounts": {
+              "1221": { "name": "Fondo 500 Acciones US", "accounts": {} }
+            }
+          }
+        }
+      },
+      "13": {
+        "name": "Prestamos Otorgados",
+        "accounts": {}
+      },
+      "14": {
+        "name": "Cuentas por Cobrar",
+        "accounts": {}
+      }
+    }
+  },
+  "2": {
+    "name": "Pasivos",
+    "nature": "credit",
+    "accounts": {
+      "21": { "name": "Prestamos", "accounts": {} },
+      "22": { "name": "Facturas por Pagar", "accounts": {} }
+    }
+  },
+  "4" : {
+    "name": "Ingresos",
+    "nature": "credit",
+    "accounts": {
+      "41": {
+        "name": "Salario",
+        "accounts": {
+            "411": { "name": "Salario base", "accounts": {} },
+            "412": { "name": "Horas Extras", "accounts": {} }
+        }
+      },
+      "42": {
+        "name": "Prima",
+        "accounts": {}
+      },
+      "43": {
+        "name": "Rendimientos financieros",
+        "accounts": {
+            "431": { "name": "CDT", "accounts": {} },
+            "432": { "name": "Intereses de Prestamos", "accounts": {} }
+        }
+      },
+        "44": {
+            "name": "Otros Ingresos",
+            "accounts": {
+                "441": { "name": "Donaciones", "accounts": {} },
+                "442": { "name": "Reembolsos", "accounts": {} }
+            }
+        }
+    }
+  },
+  "5": {
+    "name": "Gastos",
+    "nature": "debit",
+    "accounts": {
+      "51": {
+        "name": "Gastos Personales",
+        "accounts": {
+          "511": {
+            "name": "Alimentacion",
+            "accounts": {
+              "5111": {
+                "name": "Snacks",
+                "accounts": {
+                  "51111": { "name": "Snacks Salados", "accounts": {} },
+                  "51112": { "name": "Snacks Dulces", "accounts": {} },
+                  "51113": { "name": "Restaurantes", "accounts": {} },
+                  "51114": { "name": "Comida Callejera", "accounts": {} }
+                }
+              }
+            }
+          },
+          "512": {
+            "name": "Suscripciones",
+            "accounts": {
+              "5121": { "name": "Datos Moviles", "accounts": {} },
+              "5122": { "name": "Youtube Premium", "accounts": {} }
+            }
+          },
+          "513": {
+            "name": "Ocio",
+            "accounts": {
+              "5131": { "name": "Compras en linea", "accounts": {} },
+              "5132": {
+                "name": "Entretenimiento",
+                "accounts": {
+                  "51321": { "name": "Juguetes Sexuales", "accounts": {} }
+                }
+              }
+            }
+          },
+          "514": {
+            "name": "Transporte Privado",
+            "accounts": {
+              "5141": { "name": "Moto", "accounts": {} },
+              "5142": { "name": "Carro", "accounts": {} }
+            }
+          },
+          "515": {
+            "name": "Ropa",
+            "accounts": {
+              "5151": { "name": "Ropa Formal", "accounts": {} },
+              "5152": { "name": "Ropa Informal", "accounts": {} },
+              "5153": { "name": "Ropa Interior", "accounts": {} }
+            }
+          }
+        }
+      },
+      "52": {
+        "name": "Gasto a 3ero",
+        "accounts": {
+          "521": {
+            "name": "Familia",
+            "accounts": {
+              "5211": { "name": "Alimentacion", "accounts": {} },
+              "5212": { "name": "Regalos", "accounts": {} },
+              "5213": { "name": "Donaciones en efectivo", "accounts": {} }
+            }
+          },
+          "522": {
+            "name": "Social",
+            "accounts": {
+              "5221": { "name": "Alimentacion", "accounts": {} },
+              "5222": { "name": "Regalos", "accounts": {} },
+              "5223": { "name": "Donaciones en efectivo", "accounts": {} }
+            }
+          },
+          "523": {
+            "name": "Caridad",
+            "accounts": {
+              "5231": { "name": "Donaciones en efectivo", "accounts": {} }
+            }
+          }
+        }
+      },
+      "53": {
+        "name": "Hogar",
+        "accounts": {
+          "531": {
+            "name": "Servicios Publicos",
+            "accounts": {
+              "5311": { "name": "Agua", "accounts": {} },
+              "5312": { "name": "Luz", "accounts": {} },
+              "5313": { "name": "Gas", "accounts": {} },
+              "5314": { "name": "Internet", "accounts": {} }
+            }
+          },
+          "532": { "name": "Mercado", "accounts": {} },
+          "533": { "name": "Arreglos Locativos", "accounts": {} }
+        }
+      },
+      "54": {
+        "name": "Salud",
+        "accounts": {
+          "541": {
+            "name": "Citas",
+            "accounts": { "5411": { "name": "Cuota Moderadora", "accounts": {} } }
+          },
+          "542": {
+            "name": "Medicamentos",
+            "accounts": {
+              "5421": { "name": "Cuota Moderadora", "accounts": {} },
+              "5422": {
+                "name": "No POS",
+                "accounts": {
+                  "54221": { "name": "Analgecicos", "accounts": {} },
+                  "54222": { "name": "Antinflamatorios", "accounts": {} },
+                  "54223": { "name": "Cremas Corporales", "accounts": {} }
+                }
+              }
+            }
+          },
+          "543": { "name": "Plan Complementario", "accounts": {} }
+        }
+      },
+      "55": {
+        "name": "Belleza",
+        "accounts": {
+          "551": {
+            "name": "Cuidado Personal",
+            "accounts": { "5511": { "name": "Corte de Pelo", "accounts": {} } }
+          },
+          "552": {
+            "name": "Productos de Belleza",
+            "accounts": {
+              "5521": { "name": "Aceite Corporal", "accounts": {} },
+              "5522": { "name": "Cremas y Lociones", "accounts": {} },
+              "5523": { "name": "Perfumes", "accounts": {} },
+              "5524": { "name": "Shampoo y Acondicionador", "accounts": {} }
+            }
+          }
+        }
+      }
+    }
+  }
+}
