@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ResponseHelper;
 use App\Http\Requests\AccountRequest;
 use App\Models\Account;
-use Illuminate\Http\Request;
 
 class AccountsController extends Controller
 {
@@ -16,7 +16,7 @@ class AccountsController extends Controller
     public function index()
     {
         $classes = Account::whereNull('parent_id')->get();
-        return response()->json($classes);
+        return ResponseHelper::success(['accounts' => $classes]);
     }
 
     /**
@@ -28,7 +28,7 @@ class AccountsController extends Controller
     public function getByParent(string $parent_id)
     {
         $accounts = Account::where('parent_id', $parent_id)->get();
-        return response()->json($accounts);
+        return ResponseHelper::success(['accounts' => $accounts]);
     }
 
     /**
@@ -40,11 +40,11 @@ class AccountsController extends Controller
     public function store(AccountRequest $request)
     {
         $parentAccount = Account::find($request->input('parent_id'));
-
         $request->merge(['nature' => $parentAccount->nature]);
 
         $account = Account::create($request->all());
-        return response()->json($account);
+        
+        return ResponseHelper::success(['account' => $account]);
     }
 
     /**
@@ -57,7 +57,7 @@ class AccountsController extends Controller
     {
         $account = Account::find($id);
 
-        return response()->json($account);
+        return ResponseHelper::success(['account' => $account]);
     }
 
     /**
@@ -72,7 +72,7 @@ class AccountsController extends Controller
         $account = Account::find($id);
         $account->update($request->all());
 
-        return response()->json($account);
+        return ResponseHelper::success(['account' => $account]);
     }
 
     /**
@@ -87,6 +87,6 @@ class AccountsController extends Controller
         $account->is_active = false;
         $account->save();
 
-        return response()->json(['message' => 'Cuenta desactivada exitosamente.']);
+        return ResponseHelper::success([], 'Cuenta desactivada correctamente.');
     }
 }

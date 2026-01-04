@@ -1,19 +1,29 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /**
- * CRUD de Cuentas Contables
+ * Rutas de Autenticación (Limite de 4 intentos por minuto)
 */
-Route::apiResource('accounts', AccountsController::class);
+Route::middleware(['throttle:4,1'])->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:api'); 
+});
 
-/**
- * Rutas Personalizadas de Cuentas Contables
-*/
-Route::controller(AccountsController::class)->group(function () {
+Route::middleware(['auth:api'])->group(function () {
+    /**
+     * CRUD de Cuentas Contables
+    */
+    Route::apiResource('accounts', AccountsController::class);
 
-    // Listar las cuentas asociadas a la cuenta padre
-    Route::get('/accounts/by_parent/{parent_id}', 'getByParent')->name('accounts.by_parent');
-    
+    /**
+     * Rutas Personalizadas de Cuentas Contables
+    */
+    Route::controller(AccountsController::class)->group(function () {
+
+        // Listar las cuentas asociadas a la cuenta padre
+        Route::get('/accounts/by_parent/{parent_id}', 'getByParent')->name('accounts.by_parent');
+    });    
 });
