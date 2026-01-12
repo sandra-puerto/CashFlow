@@ -40,21 +40,17 @@
           "122": {
             "name": "Trii",
             "accounts": {
-              "1221": { "name": "Fondo 500 Acciones US", "accounts": {} }
+              "1221": { "name": "Fondo 500 Acciones US", "accounts": {} },
+              "1222": { "name": "Fondo Acciones Dinamico", "accounts": {} }
             }
           }
         }
       },
-      "13": {
-        "name": "Prestamos Otorgados",
-        "accounts": {}
-      },
-      "14": {
-        "name": "Cuentas por Cobrar",
-        "accounts": {}
-      }
+      "13": { "name": "Prestamos Otorgados", "accounts": {} },
+      "14": { "name": "Cuentas por Cobrar", "accounts": {} }
     }
   },
+
   "2": {
     "name": "Pasivos",
     "nature": "credit",
@@ -63,37 +59,47 @@
       "22": { "name": "Facturas por Pagar", "accounts": {} }
     }
   },
-  "4" : {
+
+  "3": {
+    "name": "Patrimonio",
+    "nature": "credit",
+    "accounts": {
+      "31": { "name": "Capital Inicial", "accounts": {} },
+      "33": { "name": "Resultados Acumulados", "accounts": {} },
+      "34": { "name": "Resultados del Ejercicio", "accounts": {} }
+    }
+  },
+
+  "4": {
     "name": "Ingresos",
     "nature": "credit",
     "accounts": {
       "41": {
         "name": "Salario",
         "accounts": {
-            "411": { "name": "Salario base", "accounts": {} },
-            "412": { "name": "Horas Extras", "accounts": {} }
+          "411": { "name": "Salario Base", "accounts": {} },
+          "412": { "name": "Horas Extras", "accounts": {} }
         }
       },
-      "42": {
-        "name": "Prima",
-        "accounts": {}
-      },
+      "42": { "name": "Prima", "accounts": {} },
       "43": {
-        "name": "Rendimientos financieros",
+        "name": "Rendimientos Financieros",
         "accounts": {
-            "431": { "name": "CDT", "accounts": {} },
-            "432": { "name": "Intereses de Prestamos", "accounts": {} }
+          "431": { "name": "CDT", "accounts": {} },
+          "432": { "name": "Intereses de Prestamos", "accounts": {} }
         }
       },
-        "44": {
-            "name": "Otros Ingresos",
-            "accounts": {
-                "441": { "name": "Donaciones", "accounts": {} },
-                "442": { "name": "Reembolsos", "accounts": {} }
-            }
+      "44": {
+        "name": "Otros Ingresos",
+        "accounts": {
+          "441": { "name": "Donaciones", "accounts": {} },
+          "442": { "name": "Reembolsos", "accounts": {} },
+          "443": { "name": "Ajuste al Peso (Ingreso)", "accounts": {} }
         }
+      }
     }
   },
+
   "5": {
     "name": "Gastos",
     "nature": "debit",
@@ -125,7 +131,7 @@
           "513": {
             "name": "Ocio",
             "accounts": {
-              "5131": { "name": "Compras en linea", "accounts": {} },
+              "5131": { "name": "Compras en Linea", "accounts": {} },
               "5132": {
                 "name": "Entretenimiento",
                 "accounts": {
@@ -148,18 +154,27 @@
               "5152": { "name": "Ropa Informal", "accounts": {} },
               "5153": { "name": "Ropa Interior", "accounts": {} }
             }
+          },
+          "516": {
+            "name": "Propinas",
+            "accounts": {
+              "5161": { "name": "Restaurantes", "accounts": {} },
+              "5162": { "name": "Transporte", "accounts": {} },
+              "5163": { "name": "Servicios", "accounts": {} }
+            }
           }
         }
       },
+
       "52": {
-        "name": "Gasto a 3ero",
+        "name": "Gasto a Terceros",
         "accounts": {
           "521": {
             "name": "Familia",
             "accounts": {
               "5211": { "name": "Alimentacion", "accounts": {} },
               "5212": { "name": "Regalos", "accounts": {} },
-              "5213": { "name": "Donaciones en efectivo", "accounts": {} }
+              "5213": { "name": "Donaciones en Efectivo", "accounts": {} }
             }
           },
           "522": {
@@ -167,17 +182,18 @@
             "accounts": {
               "5221": { "name": "Alimentacion", "accounts": {} },
               "5222": { "name": "Regalos", "accounts": {} },
-              "5223": { "name": "Donaciones en efectivo", "accounts": {} }
+              "5223": { "name": "Donaciones en Efectivo", "accounts": {} }
             }
           },
           "523": {
             "name": "Caridad",
             "accounts": {
-              "5231": { "name": "Donaciones en efectivo", "accounts": {} }
+              "5231": { "name": "Donaciones en Efectivo", "accounts": {} }
             }
           }
         }
       },
+
       "53": {
         "name": "Hogar",
         "accounts": {
@@ -194,12 +210,15 @@
           "533": { "name": "Arreglos Locativos", "accounts": {} }
         }
       },
+
       "54": {
         "name": "Salud",
         "accounts": {
           "541": {
             "name": "Citas",
-            "accounts": { "5411": { "name": "Cuota Moderadora", "accounts": {} } }
+            "accounts": {
+              "5411": { "name": "Cuota Moderadora", "accounts": {} }
+            }
           },
           "542": {
             "name": "Medicamentos",
@@ -208,8 +227,8 @@
               "5422": {
                 "name": "No POS",
                 "accounts": {
-                  "54221": { "name": "Analgecicos", "accounts": {} },
-                  "54222": { "name": "Antinflamatorios", "accounts": {} },
+                  "54221": { "name": "Analgesicos", "accounts": {} },
+                  "54222": { "name": "Antiinflamatorios", "accounts": {} },
                   "54223": { "name": "Cremas Corporales", "accounts": {} }
                 }
               }
@@ -218,12 +237,15 @@
           "543": { "name": "Plan Complementario", "accounts": {} }
         }
       },
+
       "55": {
         "name": "Belleza",
         "accounts": {
           "551": {
             "name": "Cuidado Personal",
-            "accounts": { "5511": { "name": "Corte de Pelo", "accounts": {} } }
+            "accounts": {
+              "5511": { "name": "Corte de Pelo", "accounts": {} }
+            }
           },
           "552": {
             "name": "Productos de Belleza",
@@ -234,6 +256,52 @@
               "5524": { "name": "Shampoo y Acondicionador", "accounts": {} }
             }
           }
+        }
+      },
+
+      "56": {
+        "name": "Ajustes y Redondeos",
+        "accounts": {
+          "561": { "name": "Ajuste al Peso (Gasto)", "accounts": {} }
+        }
+      },
+
+      "57": {
+        "name": "Mantenimiento de Equipos",
+        "accounts": {
+          "571": {
+            "name": "Equipos Tecnologicos",
+            "accounts": {
+              "5711": { "name": "Celular", "accounts": {} },
+              "5712": { "name": "Computador", "accounts": {} },
+              "5713": { "name": "Tablet", "accounts": {} }
+            }
+          },
+          "572": {
+            "name": "Equipos del Hogar",
+            "accounts": {
+              "5721": { "name": "Electrodomesticos", "accounts": {} },
+              "5722": { "name": "Muebles", "accounts": {} }
+            }
+          },
+          "573": {
+            "name": "Equipos de Transporte",
+            "accounts": {
+              "5731": { "name": "Moto", "accounts": {} },
+              "5732": { "name": "Carro", "accounts": {} }
+            }
+          }
+        }
+      },
+
+      "58": {
+        "name": "Perdidas y Siniestros",
+        "accounts": {
+          "581": { "name": "Dinero Perdido", "accounts": {} },
+          "582": { "name": "Robos", "accounts": {} },
+          "583": { "name": "Daños Irrecuperables", "accounts": {} },
+          "584": { "name": "Multas y Sanciones", "accounts": {} },
+          "585": { "name": "Fraudes / Estafas", "accounts": {} }
         }
       }
     }

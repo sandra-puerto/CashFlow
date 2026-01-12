@@ -1,0 +1,18 @@
+{
+    "transactions": [
+        {
+            "account_id": "019b8b4f-f406-71a9-8d0e-8de5111c3b69",
+            "datetime": "2024-06-01T10:00:00Z",
+            "description": "Transferencia interna a NQ",
+            "debit": 0,
+            "credit": 5000
+        },
+        {
+            "account_id": "019b8b4f-f40e-7327-9547-3efcba3c1db5",
+            "datetime": "2024-06-02T12:00:00Z",
+            "description": "Transdferencia interna de BCSC",
+            "debit": 5000,
+            "credit": 0
+        }
+    ]
+}

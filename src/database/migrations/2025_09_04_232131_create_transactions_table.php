@@ -22,7 +22,7 @@ return new class extends Migration
                 $table->uuid("account_id")->comment("ID de la cuenta contable afectada");
 
                 // FK: Transacción origen enlazada a la actual
-                $table->uuid('flow_id')->comment('ID de la transacción origen');
+                $table->uuid('flow_id')->comment('ID de la transacción origen')->nullable();
 
                 // Campo: Fecha y hora de registro de la transaccion
                 $table->datetime('datetime');

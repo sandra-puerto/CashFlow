@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionsController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -13,6 +14,7 @@ Route::middleware(['throttle:4,1'])->group(function () {
 });
 
 Route::middleware(['auth:api'])->group(function () {
+
     /**
      * CRUD de Cuentas Contables
     */
@@ -25,5 +27,16 @@ Route::middleware(['auth:api'])->group(function () {
 
         // Listar las cuentas asociadas a la cuenta padre
         Route::get('/accounts/by_parent/{parent_id}', 'getByParent')->name('accounts.by_parent');
-    });    
+    });
+
+    /**
+     * Rutas personalizadas de Transacciones
+    */
+    Route::controller(TransactionsController::class)->group(function () {
+
+        // Transferencia interna entre cuentas
+        Route::post('/transactions/transfer/internal', 'internalTransfer')->name('transactions.transfer.internal');
+        
+    })->middleware(['account.exists']);
 });
+

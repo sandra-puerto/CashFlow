@@ -22,6 +22,17 @@ class ResponseHelper
     }
 
     /**
+     * Devuelve una respuesta JSON estandarizada para el código HTTP 400 (Bad Request).
+     *
+     * @param string $message Mensaje de error a mostrar.
+     * @return \Illuminate\Http\JsonResponse
+    */
+    public static function badRequest(string $message = 'Solicitud incorrecta.'): JsonResponse
+    {
+        return self::custom($message, [], 400);
+    }
+
+    /**
      * Devuelve una respuesta JSON estandarizada para el código HTTP 500 (Error del Servidor).
      *
      * @param string $message Mensaje de error a mostrar.
