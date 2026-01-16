@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TransactionRequest extends FormRequest
@@ -21,13 +22,16 @@ class TransactionRequest extends FormRequest
      */
     public function rules()
     {
+        // Fecha mínima permitida: 1 de enero del año actual a las 00:00
+        $minDate = Carbon::create(now()->year, 1, 1, 0, 0)->format('Y-m-d\TH:i');
+
         return [
             // transactions es obligatorio y debe ser un array
-            'transactions' => 'required|array|min:1',
+            'transactions' => 'required|array|min:2',
 
             // Cada transacción
             'transactions.*.account_id' => 'required|uuid|exists:accounts,id',
-            'transactions.*.datetime'   => 'required|date_format:Y-m-d\TH:i:s\Z',
+            'transactions.*.datetime'   => "required|date_format:Y-m-d\TH:i|after_or_equal:$minDate",
             'transactions.*.description'=> 'nullable|string|max:255',
             'transactions.*.debit'      => 'nullable|numeric|min:0',
             'transactions.*.credit'     => 'nullable|numeric|min:0'
@@ -63,7 +67,7 @@ class TransactionRequest extends FormRequest
             // Mensajes para el array de transacciones
             'transactions.required' => 'El campo transactions es obligatorio.',
             'transactions.array' => 'El campo transactions debe ser un array.',
-            'transactions.min' => 'Debe haber al menos una transacción.',
+            'transactions.min' => 'Deben enviarse al menos dos transacciones.',
 
             // account_id
             'transactions.*.account_id.required' => 'El account_id de cada transacción es obligatorio.',
@@ -72,7 +76,8 @@ class TransactionRequest extends FormRequest
 
             // datetime
             'transactions.*.datetime.required' => 'La fecha y hora de cada transacción es obligatoria.',
-            'transactions.*.datetime.date_format' => 'La fecha y hora debe estar en formato ISO 8601, ejemplo: 2024-06-01T10:00:00Z.',
+            'transactions.*.datetime.date_format' => 'La fecha y hora debe tener el formato Y-m-d\TH:i.',
+            'transactions.*.datetime.after_or_equal' => 'Las transacciones deben realizarse en el actual periodo contable.',
 
             // description
             'transactions.*.description.string' => 'La descripción debe ser texto.',

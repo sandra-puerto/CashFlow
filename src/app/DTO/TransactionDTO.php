@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Helpers;
+namespace app\DTO;
 
 use Illuminate\Support\Carbon;
 
@@ -38,7 +38,7 @@ class TransactionDTO {
     /**
      * Definir el ID de la transacción origen enlazada a la actual.
     */
-    public function setFlowId(string $flowId): void{
+    public function setFlowId(?string $flowId): void{
         $this->flowId = $flowId;
     }
 
