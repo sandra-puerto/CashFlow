@@ -1,0 +1,48 @@
+FROM php:8.4-alpine
+
+# Valores preventivos por defecto si no se inyectan desde el compose
+ARG UID=1000
+ARG GID=1000
+ARG USERNAME=develop
+
+# Instalación de dependencias del sistema, PHP y Node.js
+RUN apk add --no-cache \
+    curl \
+    libpng-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    git \
+    oniguruma-dev \
+    nodejs \
+    npm \
+    $PHPIZE_DEPS \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apk del $PHPIZE_DEPS
+
+# Obtención de la última versión estable de Composer
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /app
+
+# Creación del grupo y usuario del sistema de forma dinámica
+RUN addgroup -g ${GID} ${USERNAME} && \
+    adduser -D -u ${UID} -G ${USERNAME} -h /home/${USERNAME} -s /bin/sh ${USERNAME}
+
+# Script de entrada para sincronizar dependencias y arrancar los servidores en paralelo
+RUN echo -e '#!/bin/sh\n\
+composer install --no-interaction --prefer-dist\n\
+npm install\n\
+npm run dev -- --host & \n\
+php artisan serve --host=0.0.0.0 --port=8000' > /usr/local/bin/entrypoint.sh \
+    && chmod +x /usr/local/bin/entrypoint.sh
+
+RUN chown -R ${USERNAME}:${USERNAME} /app
+
+USER ${USERNAME}
+
+EXPOSE 8000 5173
+
+CMD ["/usr/local/bin/entrypoint.sh"]
