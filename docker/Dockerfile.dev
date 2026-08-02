@@ -1,0 +1,25 @@
+FROM php:8.4-fpm-alpine
+
+ARG UID=1000
+ARG GID=1000
+
+RUN apk add --no-cache \
+        git curl unzip bash \
+        libpng-dev libzip-dev libxml2-dev oniguruma-dev \
+        freetype-dev libjpeg-turbo-dev icu-dev shadow \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        pdo pdo_mysql mysqli mbstring exif pcntl bcmath gd zip intl opcache
+
+RUN apk add --no-cache nodejs npm
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN addgroup -g ${GID} -S devuser 2>/dev/null || true \
+    && adduser -D -u ${UID} -G devuser -s /bin/bash devuser 2>/dev/null || true
+
+WORKDIR /var/www/html
+USER devuser
+
+EXPOSE 8000 5173
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
