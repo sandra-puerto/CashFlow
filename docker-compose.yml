@@ -1,0 +1,43 @@
+services:
+  cashflow-dev:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+      args:
+        UID: ${HOST_UID:-1000}
+        GID: ${HOST_GID:-1000}
+    container_name: cashflow-dev
+    restart: unless-stopped
+    profiles: ["dev"]
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "${SERVER_LAN_IP}:8000:8000"
+      - "${SERVER_LAN_IP}:5173:5173"
+
+  cashflow-prod:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+      args:
+        UID: ${HOST_UID:-1000}
+        GID: ${HOST_GID:-1000}
+    container_name: cashflow-prod
+    restart: unless-stopped
+    profiles: ["prod"]
+    environment:
+      - HTTP_PROXY=http://sgpt-squid:3128
+      - HTTPS_PROXY=http://sgpt-squid:3128
+      - NO_PROXY=localhost,127.0.0.1,.local,172.19.0.0/24,sgpt-nginx,nginx-database
+      - APP_ENV=production
+      - APP_DEBUG=false
+    networks:
+      - sgpt_internal_net
+
+networks:
+  sgpt_internal_net:
+    name: sgpt_internal_net
+    external: true

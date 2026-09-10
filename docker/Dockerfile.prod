@@ -1,0 +1,52 @@
+# Etapa 1: assets
+FROM node:20-alpine AS assets
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Etapa 2: vendor
+FROM composer:2 AS vendor
+WORKDIR /app
+COPY database/ database/
+COPY composer.json composer.lock ./
+RUN composer install \
+    --no-dev --no-scripts --no-interaction \
+    --prefer-dist --optimize-autoloader
+
+# Etapa 3: imagen final (Nginx + PHP-FPM)
+FROM php:8.4-fpm-alpine
+
+ARG UID=1000
+ARG GID=1000
+
+RUN apk add --no-cache nginx \
+    && apk add --no-cache \
+        libpng libzip libxml2 oniguruma freetype libjpeg-turbo icu \
+    && apk add --no-cache --virtual .build-deps \
+        libpng-dev libzip-dev libxml2-dev oniguruma-dev freetype-dev libjpeg-turbo-dev icu-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        pdo pdo_mysql mysqli mbstring exif pcntl bcmath gd zip intl opcache \
+    && apk del .build-deps
+
+# Configuración Nginx para Laravel (copia desde /nginx/nginx.conf)
+RUN rm /etc/nginx/http.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/http.d/default.conf
+
+# Crear usuario con UID/GID del host
+RUN addgroup -g ${GID} -S appgroup 2>/dev/null || true \
+    && adduser -D -u ${UID} -G appgroup -s /bin/bash appuser 2>/dev/null || true
+
+WORKDIR /var/www/html
+COPY . .
+COPY --from=assets /app/public/build ./public/build
+COPY --from=vendor /app/vendor ./vendor
+RUN chown -R appuser:appgroup /var/www/html \
+    && chmod -R 775 storage bootstrap/cache
+
+USER appuser
+
+EXPOSE 80
+CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
