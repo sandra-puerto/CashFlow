@@ -2,15 +2,19 @@
 
 namespace App\Providers;
 
+<<<<<<< HEAD
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+=======
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
+<<<<<<< HEAD
      * Inicializa la configuración global de la aplicación.
      */
     public function boot(): void
@@ -38,3 +42,20 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 }
+=======
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2

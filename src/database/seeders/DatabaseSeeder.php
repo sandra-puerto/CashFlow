@@ -15,8 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         $this->call(
             PUCSeeder::class
         );
     }
 }
+=======
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+    }
+}
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2

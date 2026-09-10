@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+<<<<<<< HEAD
         /* Tabla de almacenamiento de caché (clave-valor) */
         Schema::create('cache', function (Blueprint $table) {
             
@@ -35,6 +36,18 @@ return new class extends Migration
 
             /* Tiempo de expiración del bloqueo (timestamp Unix) */
             $table->bigInteger('expiration')->index()->comment('Timestamp de expiración del bloqueo (Unix)');
+=======
+        Schema::create('cache', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->mediumText('value');
+            $table->bigInteger('expiration')->index();
+        });
+
+        Schema::create('cache_locks', function (Blueprint $table) {
+            $table->string('key')->primary();
+            $table->string('owner');
+            $table->bigInteger('expiration')->index();
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2
         });
     }
 
@@ -46,4 +59,8 @@ return new class extends Migration
         Schema::dropIfExists('cache');
         Schema::dropIfExists('cache_locks');
     }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -57,10 +58,36 @@ class User extends Authenticatable
     {
         return [
             'document_type_id' => 'integer',
+=======
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+#[Fillable(['name', 'email', 'password'])]
+#[Hidden(['password', 'remember_token'])]
+class User extends Authenticatable
+{
+    /** @use HasFactory<UserFactory> */
+    use HasFactory, Notifiable;
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+<<<<<<< HEAD
 
     // --------------------------------------------------------------
     // Relaciones
@@ -149,3 +176,6 @@ class User extends Authenticatable
         });
     }
 }
+=======
+}
+>>>>>>> fbf79995eb7e323766be37cda723484187a892a2
