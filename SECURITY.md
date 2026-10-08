@@ -1,65 +1,65 @@
-# Política de seguridad
+# Security Policy
 
-Este documento describe cómo comunicar vulnerabilidades en CashFlow y qué puede esperar quien las reporte.
+This document describes how to report vulnerabilities in CashFlow and what reporters can expect in return.
 
-## Versiones con soporte
+## Supported versions
 
-Las correcciones de seguridad se aplican sobre la rama principal del repositorio. Las organizaciones que mantengan copias o bifurcaciones propias deben incorporar esas correcciones a su instalación.
+Security fixes are applied to the main branch of the repository. Organizations that maintain their own copies or forks are responsible for incorporating those fixes into their installations.
 
-## Cómo reportar una vulnerabilidad
+## How to report a vulnerability
 
-Las vulnerabilidades deben comunicarse de forma privada a [contacto@sandrapuerto.com](mailto:contacto@sandrapuerto.com), con el asunto "Seguridad CashFlow". No deben publicarse en Issues, Discussions ni pull requests, ya que esos espacios son públicos y la información podría ser aprovechada antes de que exista una corrección.
+Vulnerabilities must be reported privately to [contacto@sandrapuerto.com](mailto:contacto@sandrapuerto.com), using the subject line "CashFlow Security". They must not be disclosed in Issues, Discussions or pull requests, as these are public spaces and the information could be exploited before a fix is available.
 
-El reporte debe incluir, en la medida de lo posible:
+The report should include, to the extent possible:
 
-* Una descripción del problema y del componente afectado (API, panel de Filament, capa de dominio o base de datos).
-* Los pasos necesarios para reproducirlo.
-* El impacto estimado, por ejemplo acceso no autorizado, alteración de movimientos contables o exposición de información financiera.
-* La versión o el identificador del commit en que se observó.
-* Una propuesta de mitigación, si existe.
+* A description of the problem and the affected component (API, Filament panel, domain layer or database).
+* The steps required to reproduce it.
+* The estimated impact, for example unauthorized access, tampering with accounting transactions or exposure of financial information.
+* The version or commit identifier in which it was observed.
+* A proposed mitigation, if one exists.
 
-## Proceso de atención
+## Handling process
 
-1. La autora acusará recibo del reporte en un plazo de cinco (5) días hábiles.
-2. Se evaluará la vulnerabilidad y se informará al reportante si fue confirmada, así como su severidad estimada.
-3. Se desarrollará y verificará una corrección en privado.
-4. Una vez disponible la corrección, se publicará en la rama principal junto con una descripción del problema, y se reconocerá al reportante si así lo desea.
+1. The author will acknowledge receipt of the report within five (5) business days.
+2. The vulnerability will be assessed, and the reporter will be informed whether it has been confirmed, together with its estimated severity.
+3. A fix will be developed and verified in private.
+4. Once the fix is available, it will be published to the main branch together with a description of the problem, and the reporter will be credited if they so wish.
 
-Los plazos de corrección dependen de la severidad y de la complejidad del problema. La autora mantendrá informado al reportante sobre el avance.
+Remediation times depend on the severity and complexity of the issue. The author will keep the reporter informed of progress.
 
-## Divulgación coordinada
+## Coordinated disclosure
 
-Se solicita a quien reporte que no divulgue públicamente los detalles de la vulnerabilidad hasta que exista una corrección disponible o hasta acordar una fecha de divulgación conjunta.
+Reporters are asked not to disclose the details of the vulnerability publicly until a fix is available, or until a joint disclosure date has been agreed.
 
-## Alcance
+## Scope
 
-Se consideran dentro del alcance los problemas que afecten al código de este repositorio, entre ellos:
+The following are considered in scope: issues affecting the code in this repository, including:
 
-* Fallos de autenticación o autorización en la API y en el panel administrativo.
-* Alteración, omisión o eliminación indebida de comprobantes y movimientos contables.
-* Elusión de las reglas de partida doble o de las validaciones de la capa de dominio.
-* Exposición de información financiera o de terceros.
-* Inyección de código o de consultas, y vulnerabilidades en la gestión de documentos soporte cargados.
+* Authentication or authorization flaws in the API and the administrative panel.
+* Improper alteration, omission or deletion of vouchers and accounting transactions.
+* Circumvention of double-entry rules or of the domain layer validations.
+* Exposure of financial information or of third-party data.
+* Code or query injection, and vulnerabilities in the handling of uploaded supporting documents.
 
-Se consideran fuera del alcance:
+The following are considered out of scope:
 
-* Vulnerabilidades en dependencias de terceros (Laravel, Filament, PostgreSQL u otras) que deban corregirse en su propio proyecto. Pueden reportarse a CashFlow si existe una forma de mitigarlas desde este repositorio.
-* Problemas derivados de la configuración o la infraestructura de una instalación particular.
-* Ataques que requieran acceso físico al servidor o credenciales administrativas ya comprometidas.
-* Ingeniería social, denegación de servicio por saturación de recursos y hallazgos de escáneres automáticos sin una demostración de impacto.
+* Vulnerabilities in third-party dependencies (Laravel, Filament, PostgreSQL or others) that must be fixed in their own projects. They may be reported to CashFlow if a mitigation is possible from this repository.
+* Problems arising from the configuration or infrastructure of a particular installation.
+* Attacks that require physical access to the server or administrative credentials that are already compromised.
+* Social engineering, denial of service through resource exhaustion, and findings from automated scanners without a demonstration of impact.
 
-## Recomendaciones para quienes despliegan CashFlow
+## Recommendations for those deploying CashFlow
 
-Dado que cada instalación es mono-empresa y la operación del sistema corresponde a cada organización, se recomienda:
+Since each installation is single-organization and its operation is the responsibility of each organization, the following is recommended:
 
-* Establecer `APP_DEBUG=false` y `APP_ENV=production` en entornos productivos.
-* Mantener el archivo `.env` fuera del control de versiones y con permisos restringidos.
-* Servir la aplicación únicamente sobre HTTPS.
-* Utilizar credenciales propias y de privilegios mínimos para la base de datos.
-* Habilitar autenticación multifactor para los usuarios administrativos, cuando sea posible.
-* Mantener actualizados PHP, Laravel, Filament y las demás dependencias.
-* Realizar copias de seguridad periódicas de la base de datos y de los documentos soporte, y verificar su restauración.
+* Set `APP_DEBUG=false` and `APP_ENV=production` in production environments.
+* Keep the `.env` file out of version control and with restricted permissions.
+* Serve the application exclusively over HTTPS.
+* Use dedicated, least-privilege credentials for the database.
+* Enable multi-factor authentication for administrative users whenever possible.
+* Keep PHP, Laravel, Filament and the remaining dependencies up to date.
+* Perform regular backups of the database and of the supporting documents, and verify that they can be restored.
 
-## Reconocimientos
+## Acknowledgments
 
-Quienes reporten vulnerabilidades de forma responsable serán reconocidos en las notas de la corrección, salvo que prefieran permanecer en el anonimato.
+Those who report vulnerabilities responsibly will be credited in the release notes of the fix, unless they prefer to remain anonymous.
