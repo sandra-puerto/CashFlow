@@ -1,54 +1,52 @@
-Licencia CashFlow (basada en la licencia MIT)
-
+CashFlow License (based on the MIT License)
 Copyright (c) 2026 Sandra Gabriela Puerto Torres
 
-Se concede permiso, libre de cargo, a cualquier persona u organización que
-obtenga una copia de este software y de los archivos de documentación asociados
-(el "Software"), para utilizar el Software sin restricción, incluyendo, sin
-limitación, los derechos de usar, copiar, modificar, fusionar, publicar,
-distribuir, sublicenciar y/o vender copias del Software, y para permitir a las
-personas a quienes se les proporcione el Software hacer lo mismo, sujeto a las
-siguientes condiciones:
+Permission is hereby granted, free of charge, to any person or organization
+obtaining a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including without
+limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom
+the Software is furnished to do so, subject to the following conditions:
 
-1. Aviso de copyright. El aviso de copyright anterior y este aviso de permiso
-   se incluirán en todas las copias o partes sustanciales del Software.
+1. Copyright notice. The above copyright notice and this permission notice
+shall be included in all copies or substantial portions of the Software.
 
-2. Notificación de uso en producción. Toda persona u organización que utilice
-   el Software en producción, es decir, para operar su contabilidad real o la
-   de terceros, deberá informarlo por escrito a la titular del copyright, a
-   través de contacto@sandrapuerto.com, indicando el nombre de la organización,
-   dentro de los treinta (30) días siguientes al inicio del uso en producción.
-   Las pruebas, la evaluación, el desarrollo, el estudio y el uso educativo del
-   Software no requieren notificación.
+2. Notification of production use. Any person or organization that uses the
+Software in production, that is, to operate its own accounting or that of
+third parties, shall inform the copyright holder in writing through
+contacto@sandrapuerto.com, stating the name of the organization, within
+thirty (30) days of the start of production use. Testing, evaluation,
+development, study and educational use of the Software do not require
+notification.
 
-3. Autorización de mención. Con la notificación a la que se refiere la
-   condición 2, la organización autoriza a la titular del copyright a mencionar
-   públicamente el nombre de la organización como usuaria del Software, en el
-   sitio web sandrapuerto.com y en el repositorio del proyecto. La mención se
-   limitará al nombre de la organización.
+3. Authorization of mention. Upon the notification referred to in condition 2,
+the organization authorizes the copyright holder to publicly mention the
+organization's name as a user of the Software, on the website
+sandrapuerto.com and in the project repository. The mention shall be
+limited to the name of the organization.
 
-4. Mejoras de aplicación general. Toda persona u organización que utilice el
-   Software en producción y desarrolle modificaciones, correcciones o
-   funcionalidades de aplicación general, es decir, aquellas que no dependan de
-   las particularidades de su propia operación (tales como su configuración,
-   su catálogo de cuentas personalizado o sus integraciones internas), deberá
-   notificarlas a la titular del copyright, mediante una solicitud de
-   integración (pull request) en el repositorio principal del proyecto o por
-   escrito a contacto@sandrapuerto.com, dentro de los sesenta (60) días
-   siguientes a su puesta en producción. Al notificarlas, concede a la titular
-   una licencia no exclusiva, perpetua, mundial y gratuita para incorporarlas
-   al Software y distribuirlas bajo los términos de esta licencia, con el fin
-   de integrarlas en la rama principal del proyecto y ponerlas a disposición de
-   todas las organizaciones usuarias. La titular decidirá sobre su integración
-   conforme a los criterios técnicos y de alcance del proyecto.
+4. General-purpose improvements. Any person or organization that uses the
+Software in production and develops modifications, fixes or features of
+general applicability, that is, those that do not depend on the particulars
+of its own operation (such as its configuration, its customized chart of
+accounts or its internal integrations), shall notify them to the copyright
+holder, by means of a pull request to the project's main repository or in
+writing to contacto@sandrapuerto.com, within sixty (60) days of their being
+placed in production. By notifying them, it grants the copyright holder a
+non-exclusive, perpetual, worldwide and royalty-free license to incorporate
+them into the Software and to distribute them under the terms of this
+license, for the purpose of integrating them into the project's main branch
+and making them available to all user organizations. The copyright holder
+shall decide on their integration in accordance with the technical criteria
+and scope of the project.
 
-5. Incumplimiento. El incumplimiento de las condiciones 2, 3 y 4 constituye un
-   incumplimiento de esta licencia.
+Breach. Failure to comply with conditions 2, 3 and 4 constitutes a breach
+of this license.
 
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O
-IMPLÍCITA, INCLUYENDO, PERO SIN LIMITARSE A, LAS GARANTÍAS DE COMERCIABILIDAD,
-IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LA
-AUTORA O LAS TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGUNA
-RECLAMACIÓN, DAÑO U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN CONTRACTUAL,
-EXTRACONTRACTUAL O DE OTRO TIPO, DERIVADA DE, O EN CONEXIÓN CON, EL SOFTWARE O
-EL USO U OTROS TRATOS EN EL SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
